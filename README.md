@@ -1,4 +1,4 @@
-# Caosfonia: um geradorde acordes musicais para artistas!
+# Caosfonia: um gerador de acordes musicais para artistas!
 
 ## Descrição
 
