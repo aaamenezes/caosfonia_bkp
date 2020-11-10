@@ -1,0 +1,28 @@
+const Scale = {
+  C: [ "C", "Dm", "Em", "F", "G", "Am", "Bm5-", "C" ],
+  Cs: [ "C#", "D#m", "Fm", "F#", "G#", "A#m", "Cm5-", "C#" ],
+  D: [ "D", "Em", "F#m", "G", "A", "Bm", "C#m", "D" ],
+  Ds: [ "D#", "Fm", "Gm", "G#", "A#", "Cm", "Dm", "D#" ],
+  E: [ "E", "F#m", "G#m", "A", "B", "C#m", "D#m5-", "E" ],
+  F: [ "F", "Gm", "Am", "A#", "C", "Dm", "Em5-", "F" ],
+  Fs: [ "F#", "G#m", "A#m", "B", "C#", "D#m", "Fm5-", "F#" ],
+  G: [ "G", "Am", "Bm", "C", "D", "Em", "F#m5-", "G" ],
+  Gs: [ "G#", "A#m", "Cm", "C#", "D#", "Fm", "Gm5-", "G#" ],
+  A: [ "A", "Bm", "C#m", "D", "E", "F#m", "G#m5-", "A" ],
+  As: [ "A#", "Cm", "Dm", "D#", "F", "Gm", "Am5-", "A#" ],
+  B: [ "B", "C#m", "D#m", "E", "F#", "G#m", "A#m5-", "B" ],
+  Cm: [ "Cm", "Dm", "D#", "Fm", "Gm", "G#", "A#", "Cm" ],
+  Csm: [ "C#m", "D#m", "E", "F#m", "G#m", "A", "B", "C#m" ],
+  Dm: [ "Dm", "Em", "F", "Gm", "Am", "A#", "C", "Dm" ],
+  Dsm: [ "D#m", "Fm", "F#", "G#m", "A#m", "B", "C#", "D#m" ],
+  Em: [ "Em", "F#m", "G", "Am", "Bm", "C", "D", "Em" ],
+  Fm: [ "Fm", "Gm", "G#", "A#m", "Cm", "C#", "D#", "Fm" ],
+  Fsm: [ "F#m", "G#m", "A", "Bm", "C#m", "D", "E", "F#m" ],
+  Gm: [ "Gm", "Am", "A#", "Cm", "Dm", "D#", "F", "Gm" ],
+  Gsm: [ "G#m", "A#m", "B", "C#m", "D#m", "E", "F#", "G#m" ],
+  Am: [ "Am", "Bm", "C", "Dm", "Em", "F", "G", "Am" ],
+  Asm: [ "A#m", "Cm", "C#", "D#m", "Fm", "F#", "G#", "A#m" ],
+  Bm: [ "Bm", "C#m", "D", "Em", "F#m", "G", "A", "Bm" ],
+}
+
+export default Scale

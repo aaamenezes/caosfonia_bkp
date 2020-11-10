@@ -1,0 +1,26 @@
+// Átomos
+@import './base';
+
+// Templates
+@import './layout';
+
+.submit {
+  width: fit-content;
+  padding: 20px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  color: $white;
+  transition: $transition;
+  border-radius: $radius;
+
+  &.pink { background-color: $pink; }
+  &.blue { background-color: $blue; }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 1px 1px 30px -15px $white;
+    text-decoration: none;
+  }
+}
