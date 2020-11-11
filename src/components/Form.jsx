@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SubmitButton from './SubmitButton'
 
 import '../styles/Form.scss'
 
 const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
 
-  const auxAcident = (e) => {
-    e.target.previousSibling.checked = true
-    setAcident(e.target.previousSibling.value)
+  const auxChord = event => {
+    setChord(event.target.value)
+    console.log(chord)
+  }
+
+  const auxAcident = event => {
+    setAcident(event.target.previousSibling.value)
+    event.target.previousSibling.checked = true
   }
   
-  const auxTerca = (e) => {
-    e.target.previousSibling.checked = true
-    setTerca(e.target.previousSibling.value)
+  const auxTerca = event => {
+    setTerca(event.target.previousSibling.value)
+    event.target.previousSibling.checked = true
   }
 
   return (
@@ -23,8 +28,7 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
 
         <div className="input-group">
 
-          <select name='chord' onChange={e => {setChord(e.target.value)}} value={chord}>
-            <option value="random">Aleatório</option>
+          <select name='chord' onChangeCapture={event => {auxChord(event)}}>
             <option value="C">C</option>
             <option value="D">D</option>
             <option value="E">E</option>
@@ -32,22 +36,23 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
             <option value="G">G</option>
             <option value="A">A</option>
             <option value="B">B</option>
+            <option value="random">Aleatório</option>
           </select>
 
           <div className='group-radio'>
             <input type="radio" name="acident" value='none' defaultChecked />
-            <div className='button' onClick={e => auxAcident(e)}> </div>
+            <div className='button' onClick={event => auxAcident(event)}> </div>
             <input type="radio" name="acident" value='sustenido' />
-            <div className='button' onClick={e => auxAcident(e)}>#</div>
+            <div className='button' onClick={event => auxAcident(event)}>#</div>
             <input type="radio" name="acident" value='bemol' />
-            <div className='button' onClick={e => auxAcident(e)}>b</div>
+            <div className='button' onClick={event => auxAcident(event)}>b</div>
           </div>
 
           <div className='group-radio'>
             <input type="radio" name="terca" value='major' defaultChecked />
-            <div className='button' onClick={e => auxTerca(e)}>M</div>
+            <div className='button' onClick={event => auxTerca(event)}>M</div>
             <input type="radio" name="terca" value='minor' />
-            <div className='button' onClick={e => auxTerca(e)}>m</div>
+            <div className='button' onClick={event => auxTerca(event)}>m</div>
           </div>
         </div>
       </div>

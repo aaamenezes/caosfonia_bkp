@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SubmitButton from './components/SubmitButton'
 
 import Scales from './Scales'
-import sequences from './Sequences'
 import Sequences from './Sequences'
 
 import './styles/Result.scss'
 
 const Result = ({ chord, acident, terca }) => {
 
-  chord = 'Csm'
+  const [ musicVerse, setMusicVerse ] = useState([])
+  const [ musicChorus, setMusicChorus ] = useState([])
 
   const getRandomChord = () => {  // Gerar chord aleatório (nem sempre)
     const keys = [] // Criar array de chaves do objeto
@@ -31,12 +31,12 @@ const Result = ({ chord, acident, terca }) => {
   }
 
   const getRandomSequence = () => {  // Gerar random para sequence
-    const total = Sequences.length // Pegar quantidade total de sequencias
+    const total = Sequences.length // Pegar quantidade total de sequencias já criadas
     const randomPosition = parseInt(Math.random() * total) // Aleatório entre 1 e total de sequencias
     return Sequences[randomPosition]
   }
 
-  // Pegar chords de acordo com a sequence
+  // FUNÇÃO PRINCIPAL!!! Pegar chords de acordo com a sequence
   const getChords = (chord) => {
     if (chord == 'random') {
       chord = getRandomChord() // Gerar nota aleatória se necessário
@@ -44,20 +44,13 @@ const Result = ({ chord, acident, terca }) => {
     const scale = getScale(chord)
     const sequence = getRandomSequence()
     
-    console.log('Escala:', scale)
-    console.log('Sequencia:', sequence)
-    let musicVerse = []
     sequence.verse.forEach(position => {
       musicVerse.push(scale[position - 1])
     })
     
-    let musicChorus = []
     sequence.chorus.forEach(position => {
       musicChorus.push(scale[position - 1])
     })
-
-    console.log('Verso:', musicVerse)
-    console.log('Refrão:', musicChorus)
   }
 
   getChords(chord)
@@ -74,13 +67,14 @@ const Result = ({ chord, acident, terca }) => {
 
           <div className="verse">
             <h3>Notas do verso</h3>
-            <p>C - D - C - D</p>
+            <p>{ musicVerse }</p>
           </div>
 
           <div className="chorus">
             <h3>Notas do refrão</h3>
-            <p>G - A - G - A - C...</p>
+            <p>{ musicChorus }</p>
           </div>
+
         </div>
       </div>
 
