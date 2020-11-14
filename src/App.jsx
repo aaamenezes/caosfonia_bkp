@@ -11,7 +11,7 @@ import './styles/App.scss'
 
 const App = () => {
 
-  const [ chord, setChord ] = useState('')
+  const [ chord, setChord ] = useState('C')
   const [ acident, setAcident ] = useState('none')
   const [ terca, setTerca ] = useState('major')
 

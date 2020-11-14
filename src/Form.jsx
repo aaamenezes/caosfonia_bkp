@@ -1,37 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SubmitButton from './components/SubmitButton'
 
 import './styles/Form.scss'
 
 const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
 
-  // Função de teste
-  const mostrarValores = () => {
-    console.log(chord, acident, terca)
-  } // Função de teste
-
+  // Serve para quando o usuário selecionar as notas E, B
   const [ sustenidoDisplay, setSustenidoDisplay ] = useState('flex')
+  // Serve para quando o usuário selecionar as notas C, F
   const [ bemolDisplay, setBemolDisplay ] = useState('flex')
+  
+  // Serve para quando o usuário selecionar a nota random
   const [ groupRadioDisplay, setGroupRadioDisplay ] = useState('flex')
   const [ inputGroupJustifyContent, setInputGroupJustifyContent ] = useState('space-between')
   
-  inputGroupJustifyContent
-  
-  const auxChord = event => {
-    setChord(event.target.value)
+  useEffect(() => {
+    testSustenido()
+    testBemol()
+    testRandom()
+  })
 
+  const testSustenido = () => {
     if ( chord == 'E' || chord == 'B' ) {
       setSustenidoDisplay('none')
     } else {
       setSustenidoDisplay('flex')
     }
-    
+  }
+
+  const testBemol = () => {
     if ( chord == 'C' || chord == 'F' ) {
       setBemolDisplay('none')
     } else {
       setBemolDisplay('flex')
     }
+  }
 
+  const testRandom = () => {
     if ( chord == 'random' ) {
       setGroupRadioDisplay('none')
       setInputGroupJustifyContent('center')
@@ -59,7 +64,7 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
 
         <div className="input-group" style={{ justifyContent: inputGroupJustifyContent }}>
 
-          <select name='chord' onChange={event => auxChord(event)}>
+          <select name='chord' onChange={event => setChord(event.target.value)}>
             <option value="C">C</option>
             <option value="D">D</option>
             <option value="E">E</option>
@@ -91,9 +96,9 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
         </div>
       </div>
 
-      <button onClick={e => mostrarValores()}>Mostrar valores</button>
-
-      <br/><br/><br/><br/><br/><br/>
+      <div className="preview">
+        {chord} - {acident} - {terca}
+      </div>
 
       <SubmitButton url={'/result'} text='Criar sequência de acordes para a minha música!' backgroundColor='pink' />
 
