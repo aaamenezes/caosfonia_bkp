@@ -8,8 +8,7 @@ import './styles/Result.scss'
 
 const Result = ({ chord, acident, terca }) => {
 
-  const [ musicVerse, setMusicVerse ] = useState([])
-  const [ musicChorus, setMusicChorus ] = useState([])
+  console.log(chord, acident, terca)
 
   const getRandomChord = () => {  // Gerar chord aleatório (nem sempre)
     const keys = [] // Criar array de chaves do objeto
@@ -43,6 +42,9 @@ const Result = ({ chord, acident, terca }) => {
     }
     const scale = getScale(chord)
     const sequence = getRandomSequence()
+
+    let musicVerse = []
+    let musicChorus = []
     
     sequence.verse.forEach(position => {
       musicVerse.push(scale[position - 1])

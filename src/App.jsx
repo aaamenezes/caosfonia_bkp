@@ -4,14 +4,14 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
-import Form from './components/Form'
+import Form from './Form'
 import Result from './Result';
 
 import './styles/App.scss'
 
 const App = () => {
 
-  const [ chord, setChord ] = useState('C')
+  const [ chord, setChord ] = useState('')
   const [ acident, setAcident ] = useState('none')
   const [ terca, setTerca ] = useState('major')
 
