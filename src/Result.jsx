@@ -32,6 +32,8 @@ const Result = ({ chord, acident, terca }) => {
     console.log(musicVerse)
     console.log(musicChorus)
   }
+
+  getChords(chord)
   
   return (
     <React.Fragment>
@@ -43,7 +45,7 @@ const Result = ({ chord, acident, terca }) => {
 
           <div className="verse">
             <h3>Notas do verso</h3>
-            <p>{ musicVerse }</p>
+            {/* <p>{ musicVerse }</p> */}
           </div>
 
           <div className="chorus">

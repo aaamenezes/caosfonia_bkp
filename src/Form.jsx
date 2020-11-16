@@ -5,36 +5,22 @@ import './styles/Form.scss'
 
 const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
 
-  // Serve para quando o usuário selecionar as notas E, B
+  // Exibir/ocultar acidents para as notas E, B, C, F
   const [ sustenidoDisplay, setSustenidoDisplay ] = useState('flex')
-  // Serve para quando o usuário selecionar as notas C, F
-  const [ bemolDisplay, setBemolDisplay ] = useState('flex')
-  
+  const [ bemolDisplay, setBemolDisplay] = useState('flex')
+
   // Serve para quando o usuário selecionar a nota random
   const [ groupRadioDisplay, setGroupRadioDisplay ] = useState('flex')
   const [ inputGroupJustifyContent, setInputGroupJustifyContent ] = useState('space-between')
-  
+
   useEffect(() => {
-    testSustenido()
-    testBemol()
+    testAcident()
     testRandom()
+    // console.log('Chord:', chord)
+    // console.log('acident:', acident)
+    // console.log('terca:', terca)
+    // console.log('---------------------------')
   })
-
-  const testSustenido = () => {
-    if ( chord == 'E' || chord == 'B' ) {
-      setSustenidoDisplay('none')
-    } else {
-      setSustenidoDisplay('flex')
-    }
-  }
-
-  const testBemol = () => {
-    if ( chord == 'C' || chord == 'F' ) {
-      setBemolDisplay('none')
-    } else {
-      setBemolDisplay('flex')
-    }
-  }
 
   const testRandom = () => {
     if ( chord == 'random' ) {
@@ -43,6 +29,28 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
     } else {
       setGroupRadioDisplay('flex')
       setInputGroupJustifyContent('space-between')
+    }
+  }
+
+  const testAcident = () => {
+
+    if ( chord == 'E' || chord == 'B' ) {
+      setSustenidoDisplay('none')
+
+      // Setar acident como none
+      if ( acident == 'sustenido' ) setAcident('none')
+      // checked true no acident none
+    } else {
+      setSustenidoDisplay('flex')
+    }
+        
+    if ( chord == 'C' || chord == 'F' ) {
+      setBemolDisplay('none')
+
+      // Setar acident como none
+      if ( acident == 'bemol' ) setAcident('none')
+    } else {
+      setBemolDisplay('flex')
     }
   }
 
@@ -84,7 +92,7 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
             <div className='button' onClick={event => auxAcident(event)} style={{ display: sustenidoDisplay }}>#</div>
 
             <input type="radio" name="acident" value='bemol' />
-            <div className='button' onClick={event => auxAcident(event)}style={{ display: bemolDisplay }}>b</div>
+            <div className='button' onClick={event => auxAcident(event)} style={{ display: bemolDisplay }}>b</div>
           </div>
 
           <div className='group-radio' style={{ display: groupRadioDisplay }}>
@@ -93,9 +101,10 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
             <input type="radio" name="terca" value='minor' />
             <div className='button' onClick={event => auxTerca(event)}>m</div>
           </div>
+
         </div>
       </div>
-
+          
       <div className="preview">
         {chord} - {acident} - {terca}
       </div>
