@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import SubmitButton from './components/SubmitButton'
 
 import './styles/Form.scss'
@@ -9,48 +9,59 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
   const [ sustenidoDisplay, setSustenidoDisplay ] = useState('flex')
   const [ bemolDisplay, setBemolDisplay] = useState('flex')
 
-  // Serve para quando o usuário selecionar a nota random
+  // Exibir/ocultar input:radios quando o usuário selecionar a nota random
   const [ groupRadioDisplay, setGroupRadioDisplay ] = useState('flex')
   const [ inputGroupJustifyContent, setInputGroupJustifyContent ] = useState('space-between')
 
+  // Marcar check no acident none
+  const checkAcidentNone = useRef(null)
+
   useEffect(() => {
     testAcident()
-    testRandom()
-    // console.log('Chord:', chord)
-    // console.log('acident:', acident)
-    // console.log('terca:', terca)
-    // console.log('---------------------------')
   })
 
-  const testRandom = () => {
-    if ( chord == 'random' ) {
-      setGroupRadioDisplay('none')
-      setInputGroupJustifyContent('center')
-    } else {
-      setGroupRadioDisplay('flex')
-      setInputGroupJustifyContent('space-between')
+  const testAcident = test => {
+
+    switch(chord) {
+
+      case 'C':
+      case 'F':
+        setBemolDisplay('none')
+        setSustenidoDisplay('flex')
+        if ( acident == 'bemol' ) setAcident('none')
+        setGroupRadioDisplay('flex')
+        setInputGroupJustifyContent('space-between')
+        break
+
+      case 'D':
+      case 'G':
+      case 'A':
+        setSustenidoDisplay('flex')
+        setBemolDisplay('flex')
+        setGroupRadioDisplay('flex')
+        setInputGroupJustifyContent('space-between')
+        break
+
+      case 'E':
+      case 'B':
+        setSustenidoDisplay('none')
+        setBemolDisplay('flex')
+        if ( acident == 'sustenido' ) setAcident('none')
+        setGroupRadioDisplay('flex')
+        setInputGroupJustifyContent('space-between')
+        break
+
+      case 'random':
+        setGroupRadioDisplay('none')
+        setInputGroupJustifyContent('center')
+        break
     }
   }
 
-  const testAcident = () => {
-
-    if ( chord == 'E' || chord == 'B' ) {
-      setSustenidoDisplay('none')
-
-      // Setar acident como none
-      if ( acident == 'sustenido' ) setAcident('none')
-      // checked true no acident none
-    } else {
-      setSustenidoDisplay('flex')
-    }
-        
-    if ( chord == 'C' || chord == 'F' ) {
-      setBemolDisplay('none')
-
-      // Setar acident como none
-      if ( acident == 'bemol' ) setAcident('none')
-    } else {
-      setBemolDisplay('flex')
+  const auxChord = event => {
+    setChord(event.target.value)
+    if ( chord  == 'C' || chord == 'E' || chord == 'F' || chord == 'B' ) {
+      checkAcidentNone.current.check = true
     }
   }
 
@@ -72,7 +83,7 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
 
         <div className="input-group" style={{ justifyContent: inputGroupJustifyContent }}>
 
-          <select name='chord' onChange={event => setChord(event.target.value)}>
+          <select name='chord' onChange={event => auxChord(event)}>
             <option value="C">C</option>
             <option value="D">D</option>
             <option value="E">E</option>
@@ -85,7 +96,7 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
 
           <div className='group-radio' style={{ display: groupRadioDisplay }}>
 
-            <input type="radio" name="acident" value='none' defaultChecked />
+            <input type="radio" name="acident" value='none' defaultChecked ref={checkAcidentNone}/>
             <div className='button' onClick={event => auxAcident(event)}> </div>
 
             <input type="radio" name="acident" value='sustenido' />
