@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import SubmitButton from './components/SubmitButton'
 
 import './styles/Form.scss'
@@ -9,48 +9,49 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
   const [ sustenidoDisplay, setSustenidoDisplay ] = useState('flex')
   const [ bemolDisplay, setBemolDisplay] = useState('flex')
 
-  // Serve para quando o usuário selecionar a nota random
+  // Exibir/ocultar input:radios quando o usuário selecionar a nota random
   const [ groupRadioDisplay, setGroupRadioDisplay ] = useState('flex')
   const [ inputGroupJustifyContent, setInputGroupJustifyContent ] = useState('space-between')
 
+  // Marcar check no acident none
+  const checkAcidentNone = useRef(null)
+
   useEffect(() => {
-    testAcident()
-    testRandom()
-    // console.log('Chord:', chord)
-    // console.log('acident:', acident)
-    // console.log('terca:', terca)
-    // console.log('---------------------------')
-  })
+    updateOptions()
+    setAcident('none')
+    checkAcidentNone.current.click()
+  }, [chord])
 
-  const testRandom = () => {
-    if ( chord == 'random' ) {
-      setGroupRadioDisplay('none')
-      setInputGroupJustifyContent('center')
-    } else {
-      setGroupRadioDisplay('flex')
-      setInputGroupJustifyContent('space-between')
-    }
-  }
+  const updateOptions = () => {
 
-  const testAcident = () => {
+    switch(chord) {
 
-    if ( chord == 'E' || chord == 'B' ) {
-      setSustenidoDisplay('none')
-
-      // Setar acident como none
-      if ( acident == 'sustenido' ) setAcident('none')
-      // checked true no acident none
-    } else {
-      setSustenidoDisplay('flex')
-    }
-        
-    if ( chord == 'C' || chord == 'F' ) {
-      setBemolDisplay('none')
-
-      // Setar acident como none
-      if ( acident == 'bemol' ) setAcident('none')
-    } else {
-      setBemolDisplay('flex')
+      case 'C':
+      case 'F':
+        setBemolDisplay('none')
+        setSustenidoDisplay('flex')
+        setGroupRadioDisplay('flex')
+        setInputGroupJustifyContent('space-between')
+        break
+      case 'D':
+      case 'G':
+      case 'A':
+        setSustenidoDisplay('flex')
+        setBemolDisplay('flex')
+        setGroupRadioDisplay('flex')
+        setInputGroupJustifyContent('space-between')
+        break
+      case 'E':
+      case 'B':
+        setSustenidoDisplay('none')
+        setBemolDisplay('flex')
+        setGroupRadioDisplay('flex')
+        setInputGroupJustifyContent('space-between')
+        break
+      case 'random':
+        setGroupRadioDisplay('none')
+        setInputGroupJustifyContent('center')
+        break
     }
   }
 
@@ -85,7 +86,7 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
 
           <div className='group-radio' style={{ display: groupRadioDisplay }}>
 
-            <input type="radio" name="acident" value='none' defaultChecked />
+            <input type="radio" name="acident" value='none' defaultChecked ref={checkAcidentNone}/>
             <div className='button' onClick={event => auxAcident(event)}> </div>
 
             <input type="radio" name="acident" value='sustenido' />
@@ -103,10 +104,6 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
           </div>
 
         </div>
-      </div>
-          
-      <div className="preview">
-        {chord} - {acident} - {terca}
       </div>
 
       <SubmitButton url={'/result'} text='Criar sequência de acordes para a minha música!' backgroundColor='pink' />

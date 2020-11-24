@@ -11,9 +11,7 @@ const Result = ({ chord, acident, terca }) => {
 
   // Pegar chords da música de acordo com a sequence
   const getChords = (chord) => {
-    if (chord == 'random') {
-      chord = getRandomChord() // Gerar nota aleatória se necessário
-    }
+    if (chord == 'random') chord = getRandomChord() // Gerar nota aleatória se necessário
   
     const scale = getScale(chord)
     const sequence = getRandomSequence()
