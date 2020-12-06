@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import SubmitButton from './components/SubmitButton'
 
 import getRandomChord from './functions/getRandomChord'
-import getRandomSequence from './functions/getRandomSequence'
+import getRandomMusic from './functions/getRandomMusic'
 import getScale from './functions/getScale'
 
 import './styles/Result.scss'
@@ -13,17 +13,13 @@ const Result = ({ chord, acident, terca }) => {
   const getChords = (chord) => {
 
     if ( chord == 'random' ) { // Se chord veio como aleatório
-
       chord = getRandomChord() // Gerar nota aleatória
-
-    } else if ( acident == 'sustenido' ) { // Senão, se o acident for sustenido
-
-      chord += 's' // chord recebe um 's' no final
-      if ( terca == 'minor') chord = chord + 'm' // Se a terca for menor, chord recebe um 'm'
-
-    } else if ( acident == 'bemol' ) { // Senão, se o acident for bemol
-
-      chord += 'b' // chord recebe um 'b' no final
+    } else if ( true ) {
+      if ( acident == 'sustenido' ) { // Senão, se o acident for sustenido
+        chord += 's' // chord recebe um 's' no final
+      } else if ( acident == 'bemol' ) { // Senão, se o acident for bemol
+        chord += 'b' // chord recebe um 'b' no final
+      }
       if ( terca == 'minor') chord = chord + 'm' // Se a terca for menor, chord recebe um 'm'
     }
 
@@ -49,14 +45,11 @@ const Result = ({ chord, acident, terca }) => {
     }
 
     const scale = getScale(chord)
-    const sequence = getRandomSequence()
-    
-    console.log(chord)
-    console.log('scale:', scale)
-    console.log('sequence:', sequence)
+    const music = getRandomMusic()
 
-    // Até aqui ta ok desde ontem
-    
+    console.log('scale:', scale)
+    console.log('music:', music)
+
     let intro = []
     let verse1 = []
     let verse2 = []
@@ -65,41 +58,33 @@ const Result = ({ chord, acident, terca }) => {
     let pass = []
     let final = []
 
-    // sequence.intro.forEach(position => { // Preenche a array intro com as notas do verso
-    //   intro.push(scale[position - 1])
-    // })
-    
-    // sequence.verse1.forEach(position => { // Preenche a array verse1 com as notas do verso
-    //   verse1.push(scale[position - 1])
-    // })
-    
-    // sequence.verse2.forEach(position => { // Preenche a array verse2 com as notas do verso
-    //   verse2.push(scale[position - 1])
-    // })
-    
-    // sequence.prechorus.forEach(position => { // Preenche a array prechorus com as notas do verso
-    //   prechorus.push(scale[position - 1])
-    // })
-    
-    // sequence.chorus.forEach(position => { // Preenche a array chorus com as notas do refrão
-    //   chorus.push(scale[position - 1])
-    // })
-    
-    // sequence.pass.forEach(position => { // Preenche a array pass com as notas do verso
-    //   pass.push(scale[position - 1])
-    // })
-    
-    // sequence.final.forEach(position => { // Preenche a array final com as notas do verso
-    //   final.push(scale[position - 1])
-    // })
+    music.sequence.intro.forEach(position => {
+      intro.push(scale[position - 1])
+    })
 
-    // console.log(intro)
-    // console.log(verse1)
-    // console.log(verse2)
-    // console.log(prechorus)
-    // console.log(chorus)
-    // console.log(pass)
-    // console.log(final)
+    music.sequence.verse1.forEach(position => {
+      verse1.push(scale[position - 1])
+    })
+
+    music.sequence.verse2.forEach(position => {
+      verse2.push(scale[position - 1])
+    })
+
+    music.sequence.prechorus.forEach(position => {
+      prechorus.push(scale[position - 1])
+    })
+
+    music.sequence.chorus.forEach(position => {
+      chorus.push(scale[position - 1])
+    })
+
+    music.sequence.pass.forEach(position => {
+      pass.push(scale[position - 1])
+    })
+
+    music.sequence.final.forEach(position => {
+      final.push(scale[position - 1])
+    })
   }
 
   // Iniciar função ao carregar a página
@@ -113,15 +98,40 @@ const Result = ({ chord, acident, terca }) => {
 
         <div className='chords'>
 
-          <div className="verse">
-            <h3>Notas do verso</h3>
-            {/* <p>{ verse1 }</p> */}
+          <div className="part">
+            <h3>Introdução</h3>
+            <div>{ console.log('ta ok ') }</div>
           </div>
 
-          <div className="chorus">
-            <h3>Notas do refrão</h3>
-            {/* <p>{ chorus }</p> */}
+          {/* <div className="part">
+            <h3>Verso 1</h3>
+            <div>{ verse1 }</div>
           </div>
+
+          <div className="part">
+            <h3>Verso 2</h3>
+            <div>{ verse2 }</div>
+          </div>
+
+          <div className="part">
+            <h3>Pré-refrão</h3>
+            <div>{ prechorus }</div>
+          </div>
+
+          <div className="part">
+            <h3>Refrão</h3>
+            <div>{ chorus }</div>
+          </div>
+
+          <div className="part">
+            <h3>Passagem</h3>
+            <div>{ pass }</div>
+          </div>
+
+          <div className="part">
+            <h3>Final</h3>
+            <div>{ final }</div>
+          </div> */}
 
         </div>
       </div>
