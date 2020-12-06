@@ -73,7 +73,7 @@ const Form = ({ chord, setChord, acident, setAcident, terca, setTerca }) => {
 
         <div className="input-group" style={{ justifyContent: inputGroupJustifyContent }}>
 
-          <select name='chord' onChange={event => auxChord(event)}>
+          <select name='chord' onChange={event => setChord(event.target.value)}>
             <option value="C">C</option>
             <option value="D">D</option>
             <option value="E">E</option>
