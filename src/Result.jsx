@@ -9,6 +9,14 @@ import './styles/Result.scss'
 
 const Result = ({ chord, acident, terca }) => {
 
+  let intro = []
+  let verse1 = []
+  let verse2 = []
+  let prechorus = []
+  let chorus = []
+  let pass = []
+  let final = []
+
   // Pegar chords da música de acordo com a sequence
   const getChords = (chord) => {
 
@@ -47,17 +55,6 @@ const Result = ({ chord, acident, terca }) => {
     const scale = getScale(chord)
     const music = getRandomMusic()
 
-    console.log('scale:', scale)
-    console.log('music:', music)
-
-    let intro = []
-    let verse1 = []
-    let verse2 = []
-    let prechorus = []
-    let chorus = []
-    let pass = []
-    let final = []
-
     music.sequence.intro.forEach(position => {
       intro.push(scale[position - 1])
     })
@@ -85,11 +82,17 @@ const Result = ({ chord, acident, terca }) => {
     music.sequence.final.forEach(position => {
       final.push(scale[position - 1])
     })
-  }
 
-  // Iniciar função ao carregar a página
-  window.onload = getChords(chord)
+    const print = (part) => {
+      setTimeout(() => {
+        return part
+      }, 3000);
+    }
+  }
   
+  // Iniciar função ao carregar a página
+  window.addEventListener('load', getChords(chord))
+
   return (
     <React.Fragment>
       <div className='result'>
@@ -100,10 +103,10 @@ const Result = ({ chord, acident, terca }) => {
 
           <div className="part">
             <h3>Introdução</h3>
-            <div>{ console.log('ta ok ') }</div>
+            <div>{ intro }</div>
           </div>
 
-          {/* <div className="part">
+          <div className="part">
             <h3>Verso 1</h3>
             <div>{ verse1 }</div>
           </div>
@@ -131,7 +134,12 @@ const Result = ({ chord, acident, terca }) => {
           <div className="part">
             <h3>Final</h3>
             <div>{ final }</div>
-          </div> */}
+          </div>
+
+          <div className="sourc">
+            <h4>A sua música foi inspirada em:</h4>
+            <span className="music">Musica tal</span> do artista <span className="artist">Artista tal!</span>
+          </div>
 
         </div>
       </div>
