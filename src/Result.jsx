@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Part from './components/Part'
 import SubmitButton from './components/SubmitButton'
 
 import getRandomChord from './functions/getRandomChord'
@@ -17,6 +18,9 @@ const Result = ({ chord, acident, terca }) => {
   let pass = []
   let final = []
 
+  let scale
+  let music
+
   // Pegar chords da música de acordo com a sequence
   const getChords = (chord) => {
 
@@ -28,7 +32,7 @@ const Result = ({ chord, acident, terca }) => {
       } else if ( acident == 'bemol' ) { // Senão, se o acident for bemol
         chord += 'b' // chord recebe um 'b' no final
       }
-      if ( terca == 'minor') chord = chord + 'm' // Se a terca for menor, chord recebe um 'm'
+      if ( terca == 'minor') chord += 'm' // Se a terca for menor, chord recebe um 'm'
     }
 
     // Se a nota for bemol, substituir ela pela nota anterior em sustenido
@@ -52,8 +56,8 @@ const Result = ({ chord, acident, terca }) => {
       }
     }
 
-    const scale = getScale(chord)
-    const music = getRandomMusic()
+    scale = getScale(chord)
+    music = getRandomMusic()
 
     music.sequence.intro.forEach(position => {
       intro.push(scale[position - 1])
@@ -82,12 +86,6 @@ const Result = ({ chord, acident, terca }) => {
     music.sequence.final.forEach(position => {
       final.push(scale[position - 1])
     })
-
-    const print = (part) => {
-      setTimeout(() => {
-        return part
-      }, 3000);
-    }
   }
   
   // Iniciar função ao carregar a página
@@ -101,44 +99,17 @@ const Result = ({ chord, acident, terca }) => {
 
         <div className='chords'>
 
-          <div className="part">
-            <h3>Introdução</h3>
-            <div>{ intro }</div>
-          </div>
+          <Part title={ 'Introdução' } notes={ intro }></Part>
+          <Part title={ 'Verso 1' } notes={ verse1 }></Part>
+          <Part title={ 'Verso 2' } notes={ verse2 }></Part>
+          <Part title={ 'Pré-refrão' } notes={ prechorus }></Part>
+          <Part title={ 'Refrão' } notes={ chorus }></Part>
+          <Part title={ 'Passagem' } notes={ pass }></Part>
+          <Part title={ 'Final' } notes={ final }></Part>
 
-          <div className="part">
-            <h3>Verso 1</h3>
-            <div>{ verse1 }</div>
-          </div>
-
-          <div className="part">
-            <h3>Verso 2</h3>
-            <div>{ verse2 }</div>
-          </div>
-
-          <div className="part">
-            <h3>Pré-refrão</h3>
-            <div>{ prechorus }</div>
-          </div>
-
-          <div className="part">
-            <h3>Refrão</h3>
-            <div>{ chorus }</div>
-          </div>
-
-          <div className="part">
-            <h3>Passagem</h3>
-            <div>{ pass }</div>
-          </div>
-
-          <div className="part">
-            <h3>Final</h3>
-            <div>{ final }</div>
-          </div>
-
-          <div className="sourc">
-            <h4>A sua música foi inspirada em:</h4>
-            <span className="music">Musica tal</span> do artista <span className="artist">Artista tal!</span>
+          <div className="source">
+            <h4>A inspiração para a sua música foi:</h4>
+            { music.name } do artista { music.artist }
           </div>
 
         </div>

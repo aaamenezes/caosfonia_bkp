@@ -1,7 +1,7 @@
-const sequences = [
+const musics = [
   {
     artist: 'Acústicos e Valvulados',
-    music: 'Fim de tarde  ',
+    name: 'Fim de tarde',
     sequence: {
       intro: [ 1, 5, 3, 5 ],
       verse1: [ 1, 5, 3, 5 ],
@@ -14,7 +14,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Casinha',
+    name: 'Casinha',
     sequence: {
       intro: [  ],
       verse1: [ 7, 1 ],
@@ -27,7 +27,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Desenho de Deus',
+    name: 'Desenho de Deus',
     sequence: {
       intro: [ 5, 1 ],
       verse1: [ 5, 1 ],
@@ -40,7 +40,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Folha de baneneira',
+    name: 'Folha de baneneira',
     sequence: {
       intro: [  ],
       verse1: [ 4, 1, 5, 1 ],
@@ -53,7 +53,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Lua cheia',
+    name: 'Lua cheia',
     sequence: {
       intro: [ 1, 2, 4, 1 ],
       verse1: [ 1, 2, 4, 1 ],
@@ -66,7 +66,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Outra noite que se vai',
+    name: 'Outra noite que se vai',
     sequence: {
       intro: [ 3, 1 ],
       verse1: [ 3, 1, 3, 1, 3, 1, 6, 6 ],
@@ -79,7 +79,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Outra noite que se vai  ',
+    name: 'Outra noite que se vai  ',
     sequence: {
       intro: [ 1, 6 ],
       verse1: [ 1, 6, 1, 6, 1, 6, 4, 4 ],
@@ -92,7 +92,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Outra vida',
+    name: 'Outra vida',
     sequence: {
       intro: [  ],
       verse1: [ 1, 5, 6, 5, 6, 5, 4, 7 ],
@@ -105,7 +105,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Paulinha',
+    name: 'Paulinha',
     sequence: {
       intro: [  ],
       verse1: [ 1, 2, 5, 1, 4, 1, 1, 2, 5, 1 ],
@@ -118,7 +118,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Pescador',
+    name: 'Pescador',
     sequence: {
       intro: [ 1, 5, 4 ],
       verse1: [ 1, 5, 4 ],
@@ -131,7 +131,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Reggae das Tramanda',
+    name: 'Reggae das Tramanda',
     sequence: {
       intro: [  ],
       verse1: [ 1, 5, 4, 5 ],
@@ -144,7 +144,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Semente',
+    name: 'Semente',
     sequence: {
       intro: [  ],
       verse1: [ 1, 5, 6, 4 ],
@@ -157,7 +157,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Sentimento',
+    name: 'Sentimento',
     sequence: {
       intro: [  ],
       verse1: [ 1, 3, 4, 5 ],
@@ -170,7 +170,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Tarde de sol',
+    name: 'Tarde de sol',
     sequence: {
       intro: [  ],
       verse1: [ 1, 2, 4, 1, 5 ],
@@ -183,7 +183,7 @@ const sequences = [
   },
   {
     artist: 'Armandinho',
-    music: 'Ursinho de dormir',
+    name: 'Ursinho de dormir',
     sequence: {
       intro: [  ],
       verse1: [ 1, 4, 2, 5 ],
@@ -196,7 +196,7 @@ const sequences = [
   },
   {
     artist: 'Barão Vermelho',
-    music: 'Amor pra recomeçar',
+    name: 'Amor pra recomeçar',
     sequence: {
       intro: [ 5, 2, 1 ],
       verse1: [ 5, 6, 1, 5, 6, 1, 4 ],
@@ -209,7 +209,7 @@ const sequences = [
   },
   {
     artist: 'Barão Vermelho',
-    music: 'Exagerado',
+    name: 'Exagerado',
     sequence: {
       intro: [ 5, 2, 1, 5, 2, 1, 3, 2, 1, 6, 7, 2 ],
       verse1: [ 5, 2, 1, 5, 2, 1, 3, 2, 1, 6, 7, 2 ],
@@ -222,7 +222,7 @@ const sequences = [
   },
   {
     artist: 'Barão Vermelho',
-    music: 'Segredos',
+    name: 'Segredos',
     sequence: {
       intro: [  ],
       verse1: [ 5, 1, 5, 2, 1 ],
@@ -235,4 +235,4 @@ const sequences = [
   }
 ]
 
-export default sequences
+export default musics
