@@ -7,36 +7,44 @@ $blue: #3291B9;
 $gray: #CCCCCC;
 $white: #FAFAFA;
 
+// Font size
+$font-6: 6px;
+$font-10: 10px;
+$font-16: 16px;
+$font-26: 26px;
+$font-42: 42px;
+
 // Reset
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: $font-16;
   color: $white;
 }
 
-// Font (átomos)
-
-// $fontPrimary: 
-// $fontSecondary: 
-
 // Transition (átomos)
-
 $transition: .2s;
 
 // Radius (átomos)
-
 $radius: 5px;
 
 // Tags HTML (átomos)
 
 h1 {
-  // text-align: center;
+  font-weight: 700;
+  font-size: $font-42;
 }
 
 h2 {
   text-align: center;
+  font-size: $font-26;
+}
+
+h2, h3, h4, h5, h6 {
+  font-weight: 400;
 }
 
 p {
@@ -49,4 +57,8 @@ p {
 
 a {
   color: $yellow;
+}
+
+input, select, option, textarea {
+  font-weight: 700;
 }

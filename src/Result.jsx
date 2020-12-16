@@ -109,7 +109,7 @@ const Result = ({ chord, acident, terca }) => {
 
           <div className="source">
             <h4>A inspiração para a sua música foi:</h4>
-            { music.name } do artista { music.artist }
+            <div className="inspiration"><b>{ music.name }</b> do artista <b>{ music.artist }</b></div>
           </div>
 
         </div>
