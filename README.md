@@ -38,7 +38,13 @@ Com base em um banco de dados de músicas já catalogadas, a aplicação gera um
 git clone https://github.com/aaamenezes/Caosfonia.git
 ```
 
-2. Instale as dependências:
+2. Acesse a pasta do projeto:
+
+```
+cd Caosfonia
+```
+
+3. Instale as dependências:
 
 ```
 npm i
@@ -50,7 +56,7 @@ Ou:
 yarn
 ```
 
-3. Inicie o projeto:
+4. Inicie o projeto:
 
 ```
 npm run start
