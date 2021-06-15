@@ -2,12 +2,13 @@
 
 ## Descrição
 
-Estou criando esse projeto para praticar meus estudos em React.JS.  
+Este projeto foi criado para praticar meus estudos em React.JS.
 
-Mais do que executar uma tecnologia ótima de se trabalhar, é um prazer fazer algo relacionado a música, algo muito presente na minha vida.  
+Mais do que executar uma tecnologia ótima de se trabalhar, é um prazer fazer algo relacionado a música, algo muito presente na minha vida.
 
-[comment]: <## Publicação>
-[comment]: <Você pode conferir como ficou através da [página do projeto](#).>
+## Publicação
+
+Você pode conferir como ficou através da [página do projeto](https://caosfonia.vercel.app/).
 
 ## Tecnologias utilizadas
 
@@ -19,7 +20,47 @@ A estruturação é feita com o famoso "HTML dentro do Javascript", o **JSX**.
 
 E a estilização fica por conta do **SASS**.
 
-[comment]: <## Principais recursos>
+## Principais recursos
+
+O usuário precisa apenas entrar com uma informação: uma nota musical (que também pode ser aleatório).
+
+Ela pode ser normal (sem acidentes), ou com acidentes (sustenido ou bemol).
+
+Também pode escolher entre nota maior ou menor.
+
+Com base em um banco de dados de músicas já catalogadas, a aplicação gera uma ordem de acordes para uma nova canção.
+
+## Como rodar esse projeto em seu computador
+
+1. Faça um clone do projeto em seu computador:
+
+```
+git clone https://github.com/aaamenezes/Caosfonia.git
+```
+
+2. Instale as dependências:
+
+```
+npm i
+```
+
+Ou:
+
+```
+yarn
+```
+
+3. Inicie o projeto:
+
+```
+npm run start
+```
+
+Ou: 
+
+```
+yarn start
+```
 
 ## Licença
 
